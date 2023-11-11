@@ -25,3 +25,28 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.cities-container{
+  width: clamp(300px, 33em, 700px);
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.function-button{
+  padding: 0 2px;
+}
+
+.cities-container div:last-child{
+  border-left: 1px solid white;
+}
+
+.colored-text-temp{
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
