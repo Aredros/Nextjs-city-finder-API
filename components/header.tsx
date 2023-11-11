@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Django from "./Djangocircle.png";
+import Django from "../src/pages/Djangocircle.png";
 
 export default function Header() {
   return (

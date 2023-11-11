@@ -3,7 +3,6 @@
 
 import Header from "../../components/header";
 import HomeContainer from "../../containers/HomeContainer";
-
 import Head from "next/head";
 
 export default function Home() {
