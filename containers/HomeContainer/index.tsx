@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
+import React from "react";
 import { useEffect, useState, useRef, use } from "react";
-import Image from "next/image";
 import axios from "axios";
+import CityDetails from "../../components/CityDetails";
 
 interface City {
   node: {
@@ -157,7 +157,7 @@ export default function HomeContainer() {
         {tenFirstCities &&
           Array.isArray(tenFirstCities) &&
           tenFirstCities.map((item: City) => (
-            <>
+            <React.Fragment key={item.node.id}>
               <div
                 className="bg-[#171717] text-center py-2 lg:col-span-1"
                 key={`${item.node.name}-details`}
@@ -179,52 +179,20 @@ export default function HomeContainer() {
                 {" "}
                 <p>{item.node.population}</p>
               </div>
-            </>
+            </React.Fragment>
           ))}
       </div>
-      <div>
-        <button onClick={() => paginationPrev()}>⮜</button>
-        <button onClick={() => paginationNext()}>⮞</button>
+      <div className="w-full text-center my-3">
+        <button className="mx-3" onClick={() => paginationPrev()}>
+          ⮜
+        </button>
+        <button className="mx-3" onClick={() => paginationNext()}>
+          ⮞
+        </button>
       </div>
 
       <dialog ref={modalRef}>
-        <div className="p-5 w-[300px] text-center bg-[#171717] border-white border-2 rounded-md">
-          {" "}
-          <div className="text-center">
-            <Image
-              className="m-auto mb-5"
-              src={chosenCity?.country.flagImageUri || ""}
-              alt="flag"
-              width={50}
-              height={20}
-            />
-            <h3 className="text-left text-white">
-              <b> Ville: </b>
-              {chosenCity?.name}
-            </h3>
-            <h3 className="text-left text-white">
-              <b>Population:</b> {chosenCity?.population}
-            </h3>
-            <h3 className="text-left text-white">
-              <b>Elevation:</b> {chosenCity?.elevationMeters}
-            </h3>
-            <h3 className="text-left text-white">
-              <b>Timezone:</b> {chosenCity?.timezone}
-            </h3>
-            <h3 className="text-left text-white">
-              <b>Latitude:</b> {chosenCity?.latitude}
-            </h3>
-            <h3 className="text-left text-white">
-              <b>Longitude:</b> {chosenCity?.longitude}
-            </h3>
-          </div>
-          <button
-            className="m-auto bg-[#4D599C] mt-5 py-1 px-4 rounded-md text-white"
-            onClick={() => closeModal()}
-          >
-            Close
-          </button>
-        </div>
+        <CityDetails chosenCity={chosenCity} closeModal={closeModal} />
       </dialog>
     </section>
   );
